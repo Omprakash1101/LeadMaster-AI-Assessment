@@ -25,49 +25,49 @@ It provides secure authentication, randomized question selection, automated scor
 
 ## **📂 Project Structure**
 
-LeadMasters-AI-ASSESSMENT/
-├─ backend/
-│ ├─ manage.py
-│ ├─ requirements.txt
-│ ├─ .env.example
-│ ├─ Dockerfile
-│ ├─ docker-compose.yml
-│ └─ omi/
-│ ├─ __init__.py
-│ ├─ settings.py
-│ ├─ urls.py
-│ ├─ wsgi.py
-│ └─ api/
-│ ├─ __init__.py
-│ ├─ apps.py
-│ ├─ models.py
-│ ├─ serializers.py
-│ ├─ permissions.py
-│ ├─ views.py
-│ ├─ urls.py
-│ ├─ admin.py
-│ └─ management/
-│ └─ commands/
-│ └─ seed_questions.py
-│
-└─ frontend/
-├─ index.html
-├─ package.json
-├─ vite.config.js
-└─ src/
-├─ main.jsx
-├─ App.jsx
-├─ api.js
-├─ auth.jsx
-├─ components/
-│ ├─ Navbar.jsx
-│ └─ Timer.jsx
-└─ pages/
-├─ Register.jsx
-├─ Login.jsx
-├─ StartExam.jsx
-├─ Exam.jsx
-└─ Result.jsx
+LeadMasters-AI-ASSESSMENT/<br>
+├─ backend/<br>
+│ ├─ manage.py<br>
+│ ├─ requirements.txt<br>
+│ ├─ .env.example<br>
+│ ├─ Dockerfile<br>
+│ ├─ docker-compose.yml<br>
+│ └─ omi/<br>
+│ ├─ __init__.py<br>
+│ ├─ settings.py<br>
+│ ├─ urls.py<br>
+│ ├─ wsgi.py<br>
+│ └─ api/<br>
+│ ├─ __init__.py<br>
+│ ├─ apps.py<br>
+│ ├─ models.py<br>
+│ ├─ serializers.py<br>
+│ ├─ permissions.py<br>
+│ ├─ views.py<br>
+│ ├─ urls.py<br>
+│ ├─ admin.py<br>
+│ └─ management/<br>
+│ └─ commands/<br>
+│ └─ seed_questions.py<br>
+│<br>
+└─ frontend/<br>
+├─ index.html<br>
+├─ package.json<br>
+├─ vite.config.js<br>
+└─ src/<br>
+├─ main.jsx<br>
+├─ App.jsx<br>
+├─ api.js<br>
+├─ auth.jsx<br>
+├─ components/<br>
+│ ├─ Navbar.jsx<br>
+│ └─ Timer.jsx<br>
+└─ pages/<br>
+├─ Register.jsx<br>
+├─ Login.jsx<br>
+├─ StartExam.jsx<br>
+├─ Exam.jsx<br>
+└─ Result.jsx<br>
 
 ## **⚡ Backend Setup**
 ```bash
