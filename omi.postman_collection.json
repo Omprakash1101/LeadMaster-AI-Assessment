@@ -1,0 +1,150 @@
+{
+  "info": {
+    "name": "omi Exam API",
+    "_postman_id": "9b3b34e2-8827-4c88-8f9e-713eacfc28ab",
+    "description": "Postman collection for testing the omi Exam Django REST API with JWT authentication.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/register/",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "register", ""]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const res = pm.response.json();",
+              "if (res.access) {",
+              "   pm.environment.set('access_token', res.access);",
+              "   pm.environment.set('refresh_token', res.refresh);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login/",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "login", ""]
+        }
+      }
+    },
+    {
+      "name": "Refresh Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const res = pm.response.json();",
+              "if (res.access) {",
+              "   pm.environment.set('access_token', res.access);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/refresh/",
+          "host": ["{{base_url}}"],
+          "path": ["auth", "refresh", ""]
+        }
+      }
+    },
+    {
+      "name": "Start Exam",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"count\": 5\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/exam/start/",
+          "host": ["{{base_url}}"],
+          "path": ["exam", "start", ""]
+        }
+      }
+    },
+    {
+      "name": "Submit Exam",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"answers\": {\n        \"1\": \"B\",\n        \"2\": \"C\",\n        \"3\": \"B\"\n    }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/exam/1/submit/",
+          "host": ["{{base_url}}"],
+          "path": ["exam", "1", "submit", ""]
+        }
+      }
+    },
+    {
+      "name": "View Exam Result",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/exam/1/result/",
+          "host": ["{{base_url}}"],
+          "path": ["exam", "1", "result", ""]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000/api" },
+    { "key": "access_token", "value": "" },
+    { "key": "refresh_token", "value": "" }
+  ]
+}
